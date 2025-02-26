@@ -5,15 +5,15 @@ class AppThemeData {
   static ThemeData get lightThemeData {
     return ThemeData(
       colorSchemeSeed: appColors.themeColor,
-      progressIndicatorTheme: ProgressIndicatorThemeData(
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: appColors.themeColor,
       ),
       scaffoldBackgroundColor: Colors.white,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         //elevation: 3,
       ),
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         titleLarge: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 28.0,
@@ -25,7 +25,7 @@ class AppThemeData {
             letterSpacing: 0.7,
             color: Colors.grey),
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         fillColor: Colors.white,
         filled: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -40,7 +40,7 @@ class AppThemeData {
             width: 1,
           ),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: appColors.themeColor),
         ),
         focusedBorder: OutlineInputBorder(
@@ -51,15 +51,15 @@ class AppThemeData {
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
           backgroundColor: appColors.themeColor,
-          fixedSize: Size.fromWidth(double.maxFinite),
+          fixedSize: const Size.fromWidth(double.maxFinite),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 16.0,
           ),
-          padding: EdgeInsets.symmetric(vertical: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
         ),
       ),
       textButtonTheme: TextButtonThemeData(

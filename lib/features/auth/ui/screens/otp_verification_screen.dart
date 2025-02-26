@@ -1,5 +1,5 @@
 import 'package:bjp/app/app_colors.dart';
-import 'package:bjp/features/auth/ui/screens/login_screen.dart';
+import 'package:bjp/features/auth/ui/screens/new_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -34,14 +34,14 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Enter OTP Code',
-                    style: Theme.of(context).textTheme.titleLarge),
-                Text(
-                  'A 6 Digit OTP Code has been Sent',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.grey,
-                      ),
-                ),
+                Text('আপনার ইমেইল যাচাই করুন',
+                    style: Theme.of(context).textTheme.titleMedium),
+                // Text(
+                //   'A 6 Digit OTP Code has been Sent',
+                //   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                //         color: Colors.grey,
+                // ),
+                // ),
                 SizedBox(
                   height: 24.0,
                 ),
@@ -71,10 +71,10 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                 ElevatedButton(
                   onPressed: () {
                     //if (_formKey.currentState!.validate()) {}
-                    Navigator.pushNamed(context, LoginScreen.name);
+                    Navigator.pushNamed(context, NewPasswordScreen.name);
                   },
                   child: Text(
-                    'Next',
+                    'পরবর্তী',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -101,8 +101,8 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                 OtpTimerButton(
                   controller: controller,
                   onPressed: () {},
-                  text: Text('Resend Code'),
-                  duration: 60,
+                  text: Text('পুনরায় পাঠান'),
+                  duration: 10,
                   buttonType: ButtonType.text_button,
                 ),
               ],

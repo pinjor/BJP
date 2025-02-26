@@ -2,6 +2,8 @@ import 'package:bjp/app/app_theme_data.dart';
 import 'package:bjp/features/auth/ui/screens/complete_profile_screen.dart';
 import 'package:bjp/features/auth/ui/screens/login_screen.dart';
 import 'package:bjp/features/auth/ui/screens/member_list.dart';
+import 'package:bjp/features/auth/ui/screens/member_search__list.dart';
+import 'package:bjp/features/auth/ui/screens/new_password_screen.dart';
 import 'package:bjp/features/auth/ui/screens/otp_verification_screen.dart';
 import 'package:bjp/features/auth/ui/screens/program_timeline.dart';
 import 'package:bjp/features/auth/ui/screens/splash_screen.dart';
@@ -19,12 +21,14 @@ class craftybay extends StatelessWidget {
 
       //darkTheme: ThemeData(),
       routes: {
-        '/': (context) => splash_screen(),
-        LoginScreen.name: (context) => LoginScreen(),
-        ProgramTimeline.name: (context) => ProgramTimeline(),
-        OtpVeificationScreen.name: (context) => OtpVeificationScreen(),
-        CompleteProfileScreen.name: (context) => CompleteProfileScreen(),
-        MemberList.name: (context) => MemberList(),
+        '/': (context) => const splash_screen(),
+        LoginScreen.name: (context) => const LoginScreen(),
+        ProgramTimeline.name: (context) => const ProgramTimeline(),
+        OtpVeificationScreen.name: (context) => const OtpVeificationScreen(),
+        CompleteProfileScreen.name: (context) => const CompleteProfileScreen(),
+        MemberList.name: (context) => const MemberList(),
+        MemberSearchScreen.name: (context) => MemberSearchScreen(),
+        NewPasswordScreen.name: (context) => const NewPasswordScreen(),
       },
     );
   }

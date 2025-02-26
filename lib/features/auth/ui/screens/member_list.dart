@@ -1,5 +1,10 @@
+import 'package:bjp/app/assets_path.dart';
+import 'package:bjp/features/auth/ui/screens/login_screen.dart';
+import 'package:bjp/features/auth/ui/screens/member_search__list.dart';
+import 'package:bjp/features/auth/ui/screens/program_scedule_screen.dart';
 import 'package:bjp/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MemberList extends StatefulWidget {
   const MemberList({super.key});
@@ -11,36 +16,47 @@ class MemberList extends StatefulWidget {
 }
 
 class _MemberListState extends State<MemberList> {
+  final String _url = "https://rnd.egeneration.co/bjp/public/index.php";
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $uri');
+    }
+  }
+
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    Container(
-      child: Text(
-        'Index 0: Dashboard',
-      ),
-    ),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      child: Column(
+
+  // Convert _widgetOptions to a method
+  List<Widget> _widgetOptions() {
+    return <Widget>[
+      Column(
         children: [
-          Text(
-            'Member List',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+          Image.asset(
+            assetsPath.man_with_moto,
+            width: double.infinity,
+            fit: BoxFit.fill,
           ),
-          Row(
-            children: [
-              TextField(
-                decoration: InputDecoration(hintText: 'Search By Mobile'),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(),
+              onPressed: () {
+                _launchUrl(_url); // Call function properly
+              },
+              child: Text(
+                'ড্যাশবোর্ড',
+                style: TextStyle(fontSize: 20),
               ),
-            ],
-          )
+            ),
+          ),
         ],
       ),
-    ),
-    Text(
-      'Index 2: Program Schedule',
-    ),
-  ];
+      MemberSearchScreen(),
+      ProgramSceduleScreen(),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -51,7 +67,7 @@ class _MemberListState extends State<MemberList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetOptions[_selectedIndex],
+      body: _widgetOptions()[_selectedIndex], // Call function properly
       drawer: Drawer(
         width: 250,
         child: ListView(
@@ -67,34 +83,28 @@ class _MemberListState extends State<MemberList> {
             ),
             ListTile(
               leading: Icon(Icons.dashboard),
-              title: Text('Dashboard'),
+              title: Text('ড্যাশবোর্ড'),
               selected: _selectedIndex == 0,
               onTap: () {
-                // Update the state of the app
                 _onItemTapped(0);
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.person_4),
-              title: Text('Members'),
+              title: Text('সদস্য'),
               selected: _selectedIndex == 1,
               onTap: () {
-                // Update the state of the app
                 _onItemTapped(1);
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.edit),
-              title: Text('Program Schedule'),
+              title: Text('অনুষ্ঠানের সময়'),
               selected: _selectedIndex == 2,
               onTap: () {
-                // Update the state of the app
                 _onItemTapped(2);
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
@@ -102,16 +112,16 @@ class _MemberListState extends State<MemberList> {
         ),
       ),
       appBar: AppBar(
-          //title: Text('practice one'),
-          backgroundColor: Colors.tealAccent,
-          actions: [
-            IconButton(
-              onPressed: () {
-                //snackbar(context, 'add icon');
-              },
-              icon: Icon(Icons.logout),
-            ),
-          ]),
+        backgroundColor: Colors.tealAccent,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, LoginScreen.name);
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
+      ),
     );
   }
 }

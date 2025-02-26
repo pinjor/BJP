@@ -1,22 +1,61 @@
+import 'package:bjp/api/api_client.dart';
 import 'package:bjp/features/auth/ui/screens/member_list.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
-  static const String name = '/email-verification';
+  static const String name = '/login';
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Map<String, String> FormValues = {
+    "phone_number": "",
+    "password": "",
+  };
+  bool loading = false;
+
+  InputOnChange(MapKey, Textvalue) {
+    setState(() {
+      FormValues.update(MapKey, (value) => Textvalue);
+    });
+  }
+
+  FormOnSubmit() async {
+    if (FormValues['phone_number']!.length == 0) {
+      print('email error');
+    } else if (FormValues['password']!.length == 0) {
+      print('pass error');
+    } else {
+      setState(() {
+        loading = true;
+      });
+      bool response = await LoginRequest(FormValues);
+
+      if (response == true) {}
+      setState(() {
+        loading = false;
+      });
+    }
+  }
+
   final TextEditingController _emailTEController = TextEditingController();
+  final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  //final Uri _url = Uri.parse('https://flutter.dev');
+  final String _url =
+      "https://rnd.egeneration.co/bjp/public/index.php/registration";
 
-  // <-- Missing closing bracket was added here
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $uri');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +85,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                     return null;
                   },
+                  onChanged: (Textvalue) {
+                    InputOnChange("phone_number", Textvalue);
+                  },
                 ),
                 SizedBox(height: 40.0),
                 TextFormField(
-                  controller: _emailTEController,
+                  controller: _passwordTEController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     label: Text('পাসওয়ার্ড*'),
                     hintText: 'এখানে লিখুন',
                   ),
                   keyboardType: TextInputType.text,
+                  onChanged: (Textvalue) {
+                    InputOnChange("password", Textvalue);
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 183.0),
@@ -70,6 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
+                    FocusScope.of(context).unfocus();
+                    FormOnSubmit();
                     Navigator.pushReplacementNamed(
                         context, MemberList.name //'/program_timeline'
                         );
@@ -87,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text('অ্যাকাউন্ট নেই? এখনই '),
                       TextButton(
                         onPressed: () {
-                          //_launchUrl();
+                          _launchUrl(_url);
                         },
                         child: Text('মেম্বার হন।'),
                       ),
@@ -101,10 +148,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-  // Future<void> _launchUrl() async {
-  //   if (!await launchUrl(_url)) {
-  //     throw Exception('Could not launch $_url');
-  //   }
-  // }
 }

@@ -43,7 +43,6 @@ class _ProgramTimelineState extends State<ProgramTimeline> {
   }
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -19,9 +19,9 @@ class AppLogoWidget extends StatelessWidget {
     return SvgPicture.asset(
       //'assets/images/logo.svg',
       assetsPath.bjp_logo_svg,
-      width: width ?? 120,
-      height: height ?? 120,
-      fit: boxfit ?? BoxFit.scaleDown,
+      width: width ?? 100,
+      height: height ?? 100,
+      //fit: boxfit ?? BoxFit.scaleDown,
     );
   }
 }
