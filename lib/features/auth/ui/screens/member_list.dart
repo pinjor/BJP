@@ -1,3 +1,9 @@
+import 'package:bjp_app/features/auth/ui/screens/login_screen.dart';
+import 'package:bjp_app/features/auth/ui/screens/member_search__list.dart';
+import 'package:bjp_app/features/auth/ui/screens/program_scedule_screen.dart';
+
+import '../../../../app/assets_path.dart';
+import '../widgets/app_icon_widget.dart';
 import 'package:bjp/app/assets_path.dart';
 import 'package:bjp/features/auth/ui/screens/login_screen.dart';
 import 'package:bjp/features/auth/ui/screens/member_search__list.dart';
@@ -17,6 +23,8 @@ class MemberList extends StatefulWidget {
 
 class _MemberListState extends State<MemberList> {
   final String _url = "https://rnd.egeneration.co/bjp/public/index.php";
+
+  String _appBarTitle = 'ড্যাশবোর্ড';
 
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
@@ -45,10 +53,7 @@ class _MemberListState extends State<MemberList> {
               onPressed: () {
                 _launchUrl(_url); // Call function properly
               },
-              child: Text(
-                'ড্যাশবোর্ড',
-                style: TextStyle(fontSize: 20),
-              ),
+              child: Text('ড্যাশবোর্ড', style: TextStyle(fontSize: 20)),
             ),
           ),
         ],
@@ -61,6 +66,18 @@ class _MemberListState extends State<MemberList> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+
+      switch (index) {
+        case 0:
+          _appBarTitle = 'ড্যাশবোর্ড';
+          break;
+        case 1:
+          _appBarTitle = 'সদস্য';
+          break;
+        case 2:
+          _appBarTitle = 'অনুষ্ঠানের সময়';
+          break;
+      }
     });
   }
 
@@ -75,10 +92,7 @@ class _MemberListState extends State<MemberList> {
             DrawerHeader(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: AppLogoWidget(
-                  height: 5,
-                  width: 5,
-                ),
+                child: AppLogoWidget(height: 5, width: 5),
               ),
             ),
             ListTile(
@@ -113,6 +127,11 @@ class _MemberListState extends State<MemberList> {
       ),
       appBar: AppBar(
         backgroundColor: Colors.tealAccent,
+        title: Text(
+          _appBarTitle,
+          style: TextStyle(color: Colors.black, fontSize: 18),
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
