@@ -1,4 +1,4 @@
-import 'package:bjp/features/auth/ui/widgets/customlisttile.dart';
+import 'package:bjp_app/features/auth/ui/widgets/customlisttile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show Clipboard, ClipboardData;
 import 'package:url_launcher/url_launcher.dart'; // Import url_launcher

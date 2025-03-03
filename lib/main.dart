@@ -1,6 +1,6 @@
-import 'package:bjp/app/app.dart';
+import 'package:bjp_app/app/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(craftybay());
+  runApp(Craftybay());
 }

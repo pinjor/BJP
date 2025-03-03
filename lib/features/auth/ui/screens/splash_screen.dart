@@ -1,6 +1,8 @@
-import 'package:bjp/app/app_colors.dart';
-import 'package:bjp/features/auth/ui/screens/login_screen.dart';
-import 'package:bjp/features/auth/ui/widgets/app_icon_widget.dart';
+
+import 'package:bjp_app/features/auth/ui/screens/login_screen.dart';
+
+import '../../../../app/app_colors.dart';
+import '../widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
 
 class splash_screen extends StatefulWidget {
@@ -26,23 +28,16 @@ class _splash_screenState extends State<splash_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: appColors.themeColor,
+        color: AppColors.themeColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 18,
-            ),
-            AppLogoWidget(
-              height: 200,
-              width: 200,
-            ),
-            SizedBox(
-              height: 18,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
+            const SizedBox(height: 18),
+            const AppLogoWidget(height: 200, width: 200),
+            const SizedBox(height: 18),
+            const Padding(
+              padding: EdgeInsets.all(20),
               child: Text(
                 'পরিবর্তনে যোগ দিন',
                 style: TextStyle(
@@ -73,11 +68,7 @@ class _splash_screenState extends State<splash_screen> {
   Widget textWidget(String text) {
     return Text(
       text,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-        height: 1.5,
-      ),
+      style: const TextStyle(color: Colors.white, fontSize: 16, height: 1.5),
     );
   }
 }

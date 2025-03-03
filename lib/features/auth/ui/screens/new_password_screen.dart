@@ -1,6 +1,7 @@
-import 'package:bjp/api/api_client.dart';
-import 'package:bjp/features/auth/ui/screens/login_screen.dart';
+import 'package:bjp_app/features/auth/ui/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../api/api_client.dart';
 
 class NewPasswordScreen extends StatefulWidget {
   const NewPasswordScreen({super.key});
@@ -12,10 +13,7 @@ class NewPasswordScreen extends StatefulWidget {
 }
 
 class _NewPasswordScreenState extends State<NewPasswordScreen> {
-  Map<String, String> FormValues = {
-    "phone_number": "",
-    "password": "",
-  };
+  Map<String, String> formValues = {"phone_number": "", "password": ""};
   bool loading = false;
 
   // Track password visibility
@@ -24,20 +22,20 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   InputOnChange(MapKey, Textvalue) {
     setState(() {
-      FormValues.update(MapKey, (value) => Textvalue);
+      formValues.update(MapKey, (value) => Textvalue);
     });
   }
 
-  FormOnSubmit() async {
-    if (FormValues['phone_number']!.isEmpty) {
+  formOnSubmit() async {
+    if (formValues['phone_number']!.isEmpty) {
       print('Phone number error');
-    } else if (FormValues['password']!.isEmpty) {
+    } else if (formValues['password']!.isEmpty) {
       print('Password error');
     } else {
       setState(() {
         loading = true;
       });
-      bool response = await LoginRequest(FormValues);
+      bool response = await loginRequest(formValues);
 
       if (response == true) {}
       setState(() {
@@ -64,8 +62,10 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             child: Column(
               children: [
                 SizedBox(height: 80),
-                Text('নতুন পাসওয়ার্ড লিখুন',
-                    style: Theme.of(context).textTheme.titleLarge),
+                Text(
+                  'নতুন পাসওয়ার্ড লিখুন',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
                 SizedBox(height: 50.0),
                 TextFormField(
                   controller: _passwordTEController,
@@ -130,15 +130,13 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                 ElevatedButton(
                   onPressed: () {
                     FocusScope.of(context).unfocus();
-                    FormOnSubmit();
+                    formOnSubmit();
                     Navigator.pushReplacementNamed(
-                        context, LoginScreen.name //'/program_timeline'
-                        );
+                      context,
+                      LoginScreen.name, //'/program_timeline'
+                    );
                   },
-                  child: Text(
-                    'পরবর্তী',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('পরবর্তী', style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
