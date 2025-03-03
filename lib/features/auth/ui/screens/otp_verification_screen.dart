@@ -1,8 +1,10 @@
-import 'package:bjp/app/app_colors.dart';
-import 'package:bjp/features/auth/ui/screens/new_password_screen.dart';
+
+import 'package:bjp_app/features/auth/ui/screens/new_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../../../app/app_colors.dart';
 
 class OtpVeificationScreen extends StatefulWidget {
   const OtpVeificationScreen({super.key});
@@ -54,10 +56,10 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                     borderRadius: BorderRadius.circular(8),
                     //fieldHeight: 50,
                     // fieldWidth: 40,
-                    activeFillColor: appColors.themeColor,
-                    selectedFillColor: appColors.themeColor,
-                    inactiveColor: appColors.themeColor,
-                    selectedColor: appColors.themeColor,
+                    activeFillColor: AppColors.themeColor,
+                    selectedFillColor: AppColors.themeColor,
+                    inactiveColor: AppColors.themeColor,
+                    selectedColor: AppColors.themeColor,
                   ),
                   animationDuration: Duration(milliseconds: 300),
                   keyboardType: TextInputType.number,
@@ -90,7 +92,7 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                       children: [
                         TextSpan(
                           text: '60s',
-                          style: TextStyle(color: appColors.themeColor),
+                          style: TextStyle(color: AppColors.themeColor),
                         ),
                       ]),
                 ),

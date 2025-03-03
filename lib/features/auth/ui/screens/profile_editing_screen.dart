@@ -1,4 +1,3 @@
-import 'package:bjp/features/auth/ui/screens/member_list.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditingScreen extends StatefulWidget {
@@ -90,9 +89,7 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                   onPressed: () {
                     FocusScope.of(context).unfocus();
 
-                    Navigator.pushReplacementNamed(
-                        context, MemberList.name //'/program_timeline'
-                        );
+
                   },
                   child: Text(
                     'সংরক্ষণ করুন',

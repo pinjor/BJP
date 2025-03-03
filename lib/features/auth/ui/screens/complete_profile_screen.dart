@@ -1,5 +1,6 @@
-import 'package:bjp/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/app_icon_widget.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
   const CompleteProfileScreen({super.key});
