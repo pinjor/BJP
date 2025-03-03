@@ -1,7 +1,8 @@
-import 'package:bjp/api/api_client.dart';
-import 'package:bjp/features/auth/ui/screens/member_list.dart';
+import 'package:bjp_app/features/auth/ui/screens/member_list.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../api/api_client.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,28 +14,25 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Map<String, String> FormValues = {
-    "phone_number": "",
-    "password": "",
-  };
+  Map<String, String> formValues = {"phone_number": "", "password": ""};
   bool loading = false;
 
-  InputOnChange(MapKey, Textvalue) {
+  inputOnChange(mapKey, textValue) {
     setState(() {
-      FormValues.update(MapKey, (value) => Textvalue);
+      formValues.update(mapKey, (value) => textValue);
     });
   }
 
-  FormOnSubmit() async {
-    if (FormValues['phone_number']!.length == 0) {
+  formOnSubmit() async {
+    if (formValues['phone_number']!.isEmpty) {
       print('email error');
-    } else if (FormValues['password']!.length == 0) {
+    } else if (formValues['password']!.isEmpty) {
       print('pass error');
     } else {
       setState(() {
         loading = true;
       });
-      bool response = await LoginRequest(FormValues);
+      bool response = await loginRequest(formValues);
 
       if (response == true) {}
       setState(() {
@@ -60,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+     
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SingleChildScrollView(
@@ -85,8 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                     return null;
                   },
-                  onChanged: (Textvalue) {
-                    InputOnChange("phone_number", Textvalue);
+                  onChanged: (textValue) {
+                    inputOnChange("phone_number", textValue);
                   },
                 ),
                 SizedBox(height: 40.0),
@@ -98,8 +96,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintText: 'এখানে লিখুন',
                   ),
                   keyboardType: TextInputType.text,
-                  onChanged: (Textvalue) {
-                    InputOnChange("password", Textvalue);
+                  onChanged: (textValue) {
+                    inputOnChange("password", textValue);
                   },
                 ),
                 Padding(
@@ -107,7 +105,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(
-                          context, '/otp-verification');
+                        context,
+                        '/otp-verification',
+                      );
                     },
                     child: Text('পাসওয়ার্ড ভুলে গেছেন ?'),
                   ),
@@ -116,15 +116,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: () {
                     FocusScope.of(context).unfocus();
-                    FormOnSubmit();
+                    formOnSubmit();
                     Navigator.pushReplacementNamed(
-                        context, MemberList.name //'/program_timeline'
-                        );
+                      context,
+                      MemberList.name, //'/program_timeline'
+                    );
                   },
-                  child: Text(
-                    'লগইন',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('লগইন', style: TextStyle(color: Colors.white)),
                 ),
                 SizedBox(height: 15.0),
                 Padding(
