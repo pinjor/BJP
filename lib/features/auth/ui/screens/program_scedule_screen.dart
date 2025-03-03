@@ -16,7 +16,6 @@ class _ProgramSceduleScreenState extends State<ProgramSceduleScreen> {
     return Scaffold(
       body: Column(
         children: [
-          // Wrap text container with Expanded to prevent overflow
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -28,13 +27,13 @@ class _ProgramSceduleScreenState extends State<ProgramSceduleScreen> {
               children: [
                 Expanded(
                   child: Container(
-                    width: 200,
+                    width: 120,
                     height: 220,
                     decoration: BoxDecoration(
                       color: AppColors.themeColor,
                       // borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,10 +65,10 @@ class _ProgramSceduleScreenState extends State<ProgramSceduleScreen> {
                   child: SizedBox(
                     // margin: const EdgeInsets.only(left: 8.0),
                     child: Image.asset(
-                      Assets.imagesPictureOfMans,
+                      Assets.scheduleScreenBannerImage,
                       width: 160,
                       height: 220,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
