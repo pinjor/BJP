@@ -23,7 +23,7 @@ class Craftybay extends StatelessWidget {
 
       //darkTheme: ThemeData(),
       routes: {
-        '/': (context) => const splash_screen(),
+        '/': (context) => const SplashScreen(),
         LoginScreen.name: (context) => const LoginScreen(),
         ProgramTimeline.name: (context) => const ProgramTimeline(),
         OtpVeificationScreen.name: (context) => const OtpVeificationScreen(),
