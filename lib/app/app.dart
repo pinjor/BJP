@@ -22,13 +22,14 @@ class craftybay extends StatelessWidget {
       //darkTheme: ThemeData(),
       routes: {
         '/': (context) => const splash_screen(),
-        LoginScreen.name: (context) => const LoginScreen(),
+        LoginScreen.name: (context) => LoginScreen(),
         ProgramTimeline.name: (context) => const ProgramTimeline(),
         OtpVeificationScreen.name: (context) => const OtpVeificationScreen(),
         CompleteProfileScreen.name: (context) => const CompleteProfileScreen(),
         MemberList.name: (context) => const MemberList(),
         MemberSearchScreen.name: (context) => MemberSearchScreen(),
         NewPasswordScreen.name: (context) => const NewPasswordScreen(),
+        //OnboardingScreen.name: (context) => OnboardingScreen(),
       },
     );
   }
