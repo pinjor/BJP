@@ -4,6 +4,12 @@ import 'package:bjp_app/features/auth/ui/screens/program_scedule_screen.dart';
 
 import '../../../../app/assets_path.dart';
 import '../widgets/app_icon_widget.dart';
+import 'package:bjp/app/assets_path.dart';
+import 'package:bjp/features/auth/ui/screens/login_screen.dart';
+import 'package:bjp/features/auth/ui/screens/member_search__list.dart';
+import 'package:bjp/features/auth/ui/screens/profile_editing_screen.dart';
+import 'package:bjp/features/auth/ui/screens/program_scedule_screen.dart';
+import 'package:bjp/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -55,6 +61,7 @@ class _MemberListState extends State<MemberList> {
       ),
       MemberSearchScreen(),
       ProgramSceduleScreen(),
+      ProfileEditingScreen()
     ];
   }
 
@@ -114,6 +121,15 @@ class _MemberListState extends State<MemberList> {
               selected: _selectedIndex == 2,
               onTap: () {
                 _onItemTapped(2);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.edit),
+              title: Text('প্রোফাইল'),
+              selected: _selectedIndex == 3,
+              onTap: () {
+                _onItemTapped(3);
                 Navigator.pop(context);
               },
             ),
