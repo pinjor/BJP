@@ -32,7 +32,7 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                 //AppLogoWidget(),
                 SizedBox(height: 20),
                 Text(
-                  'আপনার ইমেইল যাচাই করুন',
+                  'আপনার ইমেলে পাঠানো কোডটি লিখুন',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 // Text(

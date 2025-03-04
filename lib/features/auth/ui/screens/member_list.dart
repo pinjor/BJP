@@ -49,7 +49,7 @@ class _MemberListState extends State<MemberList> {
               onPressed: () {
                 _launchUrl(_url); // Call function properly
               },
-              child: Text('ড্যাশবোর্ড', style: TextStyle(fontSize: 20)),
+              child: Text('ওয়েবসাইট', style: TextStyle(fontSize: 20)),
             ),
           ),
         ],
