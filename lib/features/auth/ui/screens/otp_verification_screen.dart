@@ -1,4 +1,3 @@
-
 import 'package:bjp_app/features/auth/ui/screens/new_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
@@ -29,24 +28,20 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(
-                  height: 80,
-                ),
+                SizedBox(height: 80),
                 //AppLogoWidget(),
-                SizedBox(
-                  height: 20,
+                SizedBox(height: 20),
+                Text(
+                  'আপনার ইমেইল যাচাই করুন',
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Text('আপনার ইমেইল যাচাই করুন',
-                    style: Theme.of(context).textTheme.titleMedium),
                 // Text(
                 //   'A 6 Digit OTP Code has been Sent',
                 //   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 //         color: Colors.grey,
                 // ),
                 // ),
-                SizedBox(
-                  height: 24.0,
-                ),
+                SizedBox(height: 24.0),
                 PinCodeTextField(
                   length: 6,
                   obscureText: false,
@@ -67,34 +62,26 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                   appContext: context,
                   controller: _otpTEController,
                 ),
-                SizedBox(
-                  height: 16.0,
-                ),
+                SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
                     //if (_formKey.currentState!.validate()) {}
                     Navigator.pushNamed(context, NewPasswordScreen.name);
                   },
-                  child: Text(
-                    'পরবর্তী',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('পরবর্তী', style: TextStyle(color: Colors.white)),
                 ),
-                SizedBox(
-                  height: 24.0,
-                ),
+                SizedBox(height: 24.0),
                 RichText(
                   text: TextSpan(
-                      text: 'This code will be expired in ',
-                      style: TextStyle(
-                        color: Colors.grey,
+                    text: 'এই কোডটির মেয়াদ শেষ হবে ',
+                    style: TextStyle(color: Colors.grey),
+                    children: [
+                      TextSpan(
+                        text: '৩০ সে.',
+                        style: TextStyle(color: AppColors.themeColor),
                       ),
-                      children: [
-                        TextSpan(
-                          text: '60s',
-                          style: TextStyle(color: AppColors.themeColor),
-                        ),
-                      ]),
+                    ],
+                  ),
                 ),
                 // TextButton(
                 //   onPressed: () {},
@@ -104,7 +91,7 @@ class _OtpVeificationScreenState extends State<OtpVeificationScreen> {
                   controller: controller,
                   onPressed: () {},
                   text: Text('পুনরায় পাঠান'),
-                  duration: 10,
+                  duration: 30,
                   buttonType: ButtonType.text_button,
                 ),
               ],
