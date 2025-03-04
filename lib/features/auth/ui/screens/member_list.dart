@@ -1,17 +1,12 @@
 import 'package:bjp_app/features/auth/ui/screens/login_screen.dart';
 import 'package:bjp_app/features/auth/ui/screens/member_search__list.dart';
+import 'package:bjp_app/features/auth/ui/screens/profile_editing_screen.dart';
 import 'package:bjp_app/features/auth/ui/screens/program_scedule_screen.dart';
-
-import '../../../../app/assets_path.dart';
-import '../widgets/app_icon_widget.dart';
-import 'package:bjp/app/assets_path.dart';
-import 'package:bjp/features/auth/ui/screens/login_screen.dart';
-import 'package:bjp/features/auth/ui/screens/member_search__list.dart';
-import 'package:bjp/features/auth/ui/screens/profile_editing_screen.dart';
-import 'package:bjp/features/auth/ui/screens/program_scedule_screen.dart';
-import 'package:bjp/features/auth/ui/widgets/app_icon_widget.dart';
+import 'package:bjp_app/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../app/assets_path.dart';
 
 class MemberList extends StatefulWidget {
   const MemberList({super.key});
@@ -61,7 +56,7 @@ class _MemberListState extends State<MemberList> {
       ),
       MemberSearchScreen(),
       ProgramSceduleScreen(),
-      ProfileEditingScreen()
+      ProfileEditingScreen(),
     ];
   }
 
@@ -79,6 +74,9 @@ class _MemberListState extends State<MemberList> {
         case 2:
           _appBarTitle = 'অনুষ্ঠানের সময়';
           break;
+        case 3:
+          _appBarTitle = 'প্রোফাইল পরিবর্তন';
+          break;
       }
     });
   }
@@ -91,12 +89,7 @@ class _MemberListState extends State<MemberList> {
         width: 250,
         child: ListView(
           children: [
-            DrawerHeader(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: AppLogoWidget(height: 5, width: 5),
-              ),
-            ),
+            DrawerHeader(child: AppLogoWidget(height: 10, width: 10)),
             ListTile(
               leading: Icon(Icons.dashboard),
               title: Text('ড্যাশবোর্ড'),
@@ -126,7 +119,7 @@ class _MemberListState extends State<MemberList> {
             ),
             ListTile(
               leading: Icon(Icons.edit),
-              title: Text('প্রোফাইল'),
+              title: Text('প্রোফাইল পরিবর্তন'),
               selected: _selectedIndex == 3,
               onTap: () {
                 _onItemTapped(3);

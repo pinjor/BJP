@@ -1,4 +1,3 @@
-import 'package:bjp/features/auth/ui/screens/member_list.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditingScreen extends StatefulWidget {
@@ -13,10 +12,7 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('প্রোফাইল পরিবর্তন'),
-        centerTitle: true,
-      ),
+      //appBar: AppBar(title: Text('প্রোফাইল পরিবর্তন'), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SingleChildScrollView(
@@ -64,7 +60,10 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                     DropdownMenuItem(value: 'সিলেট', child: Text('সিলেট')),
                     DropdownMenuItem(value: 'বরিশাল', child: Text('বরিশাল')),
                     DropdownMenuItem(value: 'রাজশাহী', child: Text('রাজশাহী')),
-                    DropdownMenuItem(value: 'দিনাজপুর', child: Text('দিনাজপুর'))
+                    DropdownMenuItem(
+                      value: 'দিনাজপুর',
+                      child: Text('দিনাজপুর'),
+                    ),
                   ],
                 ),
                 SizedBox(height: 20.0),
@@ -89,10 +88,6 @@ class _ProfileEditingScreenState extends State<ProfileEditingScreen> {
                 ElevatedButton(
                   onPressed: () {
                     FocusScope.of(context).unfocus();
-
-                    Navigator.pushReplacementNamed(
-                        context, MemberList.name //'/program_timeline'
-                        );
                   },
                   child: Text(
                     'সংরক্ষণ করুন',
